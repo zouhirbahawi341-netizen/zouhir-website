@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZOUHIR</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Segoe UI,sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+background-size:cover;
+background-position:center;
+}
+
+.card{
+max-width:750px;
+padding:35px;
+text-align:center;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+}
+
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,255,255,.5);
+}
+
+h1{
+font-size:55px;
+margin-bottom:10px;
+text-shadow:0 0 20px white;
+}
+
+.about{
+line-height:1.8;
+margin-top:20px;
+font-size:17px;
+}
+
+.instagram{
+display:inline-block;
+margin-top:25px;
+padding:14px 28px;
+background:#E1306C;
+color:white;
+text-decoration:none;
+border-radius:50px;
+font-weight:bold;
+}
+
+.spotify{
+margin-top:25px;
+}
+
+.quote{
+margin-top:25px;
+font-style:italic;
+opacity:.8;
+}
+
+footer{
+margin-top:25px;
+opacity:.6;
+}
+
+#snow{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<section class="hero">
+<div class="card">
+
+<img src="https://i.ibb.co/HfXvskDw/me-1.png" class="profile" alt="Zouhir">
+
+<h1>ZOUHIR 🇩🇿</h1>
+
+<p>🎮 Gamer • 💪 Calisthenics Athlete • 📍 Algeria</p>
+
+<div class="about">
+I'm a passionate gamer who enjoys spending time exploring new games and improving my skills.
+My favorite sport is Calisthenics, which helps me stay strong, disciplined, and healthy.
+I love learning new things, meeting new people, and challenging myself every day.
+
+<br><br>
+
+<strong>Welcome to my website! 🎮💪</strong>
+</div>
+
+<a class="instagram"
+href="https://www.instagram.com/withe_wolf1/"
+target="_blank">
+<i class="fab fa-instagram"></i> @withe_wolf1
+</a>
+
+<div class="spotify">
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/36IHZfJOGyB42wLbDsUtni"
+width="100%"
+height="152"
+frameBorder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy">
+</iframe>
+</div>
+
+<div class="quote">
+"Success doesn't come from what you do occasionally, it comes from what you do consistently."
+</div>
+
+<footer>
+ZOUHIR © 2026 🇩🇿
+</footer>
+
+</div>
+</section>
+
+<script>
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+const snow=[];
+
+for(let i=0;i<150;i++){
+snow.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3+1,
+d:Math.random()*2+1
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+ctx.beginPath();
+
+for(let i=0;i<snow.length;i++){
+let s=snow[i];
+ctx.moveTo(s.x,s.y);
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2,true);
+}
+ctx.fill();
+
+for(let i=0;i<snow.length;i++){
+let s=snow[i];
+s.y+=s.d;
+
+if(s.y>canvas.height){
+s.y=0;
+s.x=Math.random()*canvas.width;
+}
+}
+}
+
+setInterval(draw,25);
+</script>
+
+</body>
+</html>
