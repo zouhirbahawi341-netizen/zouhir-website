@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZOUHIR</title>
+
+<!-- رابط Font Awesome لظمان ظهور جميع أيقونات وسائل التواصل الاجتماعي (إنستغرام، فيسبوك، ستيم) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+background:#000;
+color:#fff;
+overflow-x:hidden;
+}
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
+url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
+background-size:cover;
+background-position:center;
+}
+
+.card{
+width:100%;
+max-width:750px;
+padding:35px;
+text-align:center;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(15px);
+-webkit-backdrop-filter:blur(15px);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.15);
+position: relative;
+z-index: 2;
+}
+
+.profile{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:4px solid white;
+margin-bottom:20px;
+box-shadow:0 0 25px rgba(255,255,255,.5);
+}
+
+h1{
+font-size:55px;
+margin-bottom:10px;
+text-shadow:0 0 20px white;
+}
+
+.about{
+line-height:1.8;
+margin-top:20px;
+font-size:17px;
+}
+
+/* تنسيق حاوية الأزرار لتوزيعها بشكل متناسق */
+.social-buttons {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 15px;
+margin-top: 25px;
+}
+
+/* التنسيق الأساسي الموحد لجميع الأزرار */
+.btn-social {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+padding: 14px 24px;
+color: white;
+text-decoration: none;
+border-radius: 50px;
+font-weight: bold;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-social:hover {
+transform: scale(1.05);
+}
+
+/* الألوان الخاصة بكل منصة */
+.instagram {
+background: #E1306C;
+box-shadow: 0 4px 15px rgba(225, 48, 108, 0.3);
+}
+
+.facebook {
+background: #1877F2;
+box-shadow: 0 4px 15px rgba(24, 119, 242, 0.3);
+}
+
+.steam {
+background: #171a21;
+border: 1px solid rgba(255,255,255,0.2);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.spotify{
+margin-top:25px;
+}
+
+.quote{
+margin-top:25px;
+font-style:italic;
+opacity:.8;
+}
+
+footer{
+margin-top:25px;
+opacity:.6;
+}
+
+#snow{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index: 1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="snow"></canvas>
+
+<section class="hero">
+<div class="card">
+
+<img src="me (1).png" class="profile" alt="Zouhir">
+
+<h1>ZOUHIR 🇩🇿</h1>
+
+<p>🎮 Gamer • 💪 Calisthenics Athlete • 📍 Algeria</p>
+
+<div class="about">
+I'm a passionate gamer who enjoys spending time exploring new games and improving my skills.
+My favorite sport is Calisthenics, which helps me stay strong, disciplined, and healthy.
+I love learning new things, meeting new people, and challenging myself every day.
+
+<br><br>
+
+<strong>Welcome to my website! 🎮💪</strong>
+</div>
+
+<!-- مجموعة أزرار التواصل الاجتماعي المحدثة بروابطك الحقيقية -->
+<div class="social-buttons">
+    <!-- زر إنستغرام -->
+    <a class="btn-social instagram" href="https://www.instagram.com/withe_wolf1/" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+    </a>
+
+    <!-- زر فيسبوك -->
+    <a class="btn-social facebook" href="https://www.facebook.com/zohir.hocine.534073/" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+
+    <!-- زر ستيم -->
+    <a class="btn-social steam" href="https://steamcommunity.com/profiles/76561199879337291/friends/add/" target="_blank">
+        <i class="fab fa-steam"></i> Steam
+    </a>
+</div>
+
+<div class="spotify">
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/52HaJIVCidh340KF16F2O7?si=9105e9891ea14a61"
+width="100%"
+height="152"
+frameBorder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy">
+</iframe>
+</div>
+
+<div class="quote">
+"Success doesn't come from what you do occasionally, it comes from what you do consistently."
+</div>
+
+<footer>
+ZOUHIR © 2026 🇩🇿
+</footer>
+
+</div>
+</section>
+
+<script>
+const canvas=document.getElementById("snow");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas() {
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const snow=[];
+
+for(let i=0;i<150;i++){
+snow.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*3+1,
+d:Math.random()*2+1
+});
+}
+
+function draw(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="white";
+ctx.beginPath();
+
+for(let i=0;i<snow.length;i++){
+let s=snow[i];
+ctx.moveTo(s.x,s.y);
+ctx.arc(s.x,s.y,s.r,0,Math.PI*2,true);
+}
+ctx.fill();
+
+for(let i=0;i<snow.length;i++){
+let s=snow[i];
+s.y+=s.d;
+
+if(s.y>canvas.height){
+s.y=0;
+s.x=Math.random()*canvas.width;
+}
+}
+}
+
+function animate() {
+    draw();
+    requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
