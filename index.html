@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #050505;
+            background-color: #000000; /* خلفية سوداء داكنة */
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* حاوية الخلفية المتحركة وسكة دوران السيارة */
+        /* حاوية الخلفية المتحركة للسيارة */
         .background-animation {
             position: fixed;
             top: 0;
@@ -39,94 +39,26 @@
             align-items: center;
         }
 
-        /* مجسم سيارة نيون متحرك يدور حول الموقع */
-        .neon-car {
+        /* سيارة رياضية تدور حول الكارت */
+        .rotating-car {
             position: absolute;
-            width: 60px;
-            height: 30px;
-            background: #00ffff;
-            border-radius: 8px;
-            box-shadow: 0 0 25px #00ffff, 0 0 45px #00ffff;
-            animation: driveAround 12s linear infinite;
+            width: 120px; /* حجم السيارة الدوارة */
+            height: auto;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.6));
+            animation: driveAround 14s linear infinite;
         }
 
-        .neon-car::after {
-            content: '';
-            position: absolute;
-            right: -10px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-top: 10px solid transparent;
-            border-bottom: 10px solid transparent;
-            border-left: 15px solid rgba(0, 255, 255, 0.8);
-            filter: blur(2px);
-        }
-
+        /* مسار دوران السيارة حول محتوى الموقع */
         @keyframes driveAround {
-            0% { transform: rotate(0deg) translateX(320px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(320px) rotate(-360deg); }
+            0% {
+                transform: rotate(0deg) translateX(340px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(340px) rotate(-360deg);
+            }
         }
 
-        /* زر التحكم في الموسيقى الصغير (ثابت في زاوية الشاشة) */
-        .music-controller {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: all 0.3s ease;
-        }
-
-        .music-controller:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .music-btn {
-            background: none;
-            border: none;
-            color: #fff;
-            font-size: 1.1rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-
-        .music-btn:hover {
-            color: #00ffff;
-            transform: scale(1.1);
-        }
-
-        /* شريط التحكم في حدة الصوت الدقيق */
-        .volume-slider {
-            width: 0;
-            opacity: 0;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            height: 4px;
-            accent-color: #00ffff;
-        }
-
-        .music-controller:hover .volume-slider {
-            width: 70px;
-            opacity: 1;
-        }
-
-        /* محتوى الموقع الرئيسي */
+        /* محتوى الموقع الرئيسي فوق الخلفية */
         .hero {
             position: relative;
             z-index: 10;
@@ -137,23 +69,24 @@
         }
 
         .profile-container {
-            background: rgba(15, 15, 15, 0.65);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
+            background: rgba(15, 15, 15, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px 30px;
             border-radius: 24px;
             width: 100%;
             max-width: 540px;
             text-align: center;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.9);
         }
 
+        /* تم تكبير حجم الصورة الشخصية هنا لتظهر واضحة وكبيرة */
         .avatar-box {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
+            width: 180px; /* الحجم الجديد المكبر */
+            height: 180px; 
+            margin: 0 auto 25px;
         }
 
         .avatar-box img {
@@ -161,8 +94,8 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            border: 4px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
         }
 
         h1 {
@@ -224,12 +157,20 @@
             filter: brightness(1.1);
         }
 
+        /* تنسيق مشغل سبوتيفاي المحسن ليظهر بوضوح */
+        .spotify {
+            margin-top: 10px;
+            margin-bottom: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: transparent;
+        }
+
         .quote {
             font-style: italic;
             color: #aaa;
             font-size: 0.9rem;
             margin-bottom: 25px;
-            margin-top: 15px;
         }
 
         .footer {
@@ -243,18 +184,7 @@
 <body>
 
     <div class="background-animation">
-        <div class="neon-car"></div>
-    </div>
-
-    <audio id="bg-music" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
-    </audio>
-
-    <div class="music-controller">
-        <button class="music-btn" id="play-pause-btn">
-            <i class="fas fa-play" id="music-icon"></i>
-        </button>
-        <input type="range" class="volume-slider" id="volume-control" min="0" max="1" step="0.1" value="0.4">
+        <img src="https://i.imgur.com/7bZgLwM.png" alt="Car" class="rotating-car">
     </div>
 
     <div class="hero">
@@ -271,7 +201,7 @@
             </div>
 
             <p class="bio">
-                I'm a passionate gamer who enjoys spending time exploring new games and improving my skills. My favorite sport is Calisthenics, which helps me stay strong, disciplined, and healthy. I love learning new things, meeting new people, and challenging myself every day.
+                My name is Zouhir, and I am a dedicated gamer and calisthenics athlete from Algeria. I have a deep passion for gaming, exploring virtual worlds, and constantly refining my tactical skills. Beyond the screen, I challenge my physical limits through calisthenics, focusing on bodyweight training to build discipline, strength, and balance. I love pushing boundaries, setting new goals, and connecting with people who share the same mindset. Welcome to my space!
             </p>
 
             <div class="welcome-msg">
@@ -285,9 +215,22 @@
                 <a href="https://www.facebook.com/zohir.hocine.534073/" class="social-link facebook" target="_blank">
                     <i class="fab fa-facebook-f"></i> Facebook
                 </a>
-                <a href="https://steamcommunity.com/profiles/7656119879337291/friends/add/" class="social-link steam" target="_blank">
+                <a href="https://steamcommunity.com/profiles/7656118879337291/friends/add/" class="social-link steam" target="_blank">
                     <i class="fab fa-steam"></i> Steam
                 </a>
+            </div>
+
+            <div class="spotify">
+                <iframe 
+                    style="border-radius:12px" 
+                    src="https://open.spotify.com/embed/track/52HaJIVCidh340KF16F207?si=9105e9891ea14a61" 
+                    width="100%" 
+                    height="152" 
+                    frameBorder="0" 
+                    allowfullscreen="" 
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                    loading="lazy">
+                </iframe>
             </div>
 
             <div class="quote">
@@ -300,50 +243,6 @@
 
         </div>
     </div>
-
-    <script>
-        const music = document.getElementById('bg-music');
-        const playPauseBtn = document.getElementById('play-pause-btn');
-        const musicIcon = document.getElementById('music-icon');
-        const volumeControl = document.getElementById('volume-control');
-
-        // تحديد حجم الصوت الافتراضي (0.4 يعني منخفض ومريح)
-        music.volume = 0.4;
-
-        // محاولة تشغيل الصوت تلقائياً بمجرد تحميل الصفحة
-        window.addEventListener('DOMContentLoaded', () => {
-            const playPromise = music.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    // نجح التشغيل التلقائي
-                    musicIcon.className = "fas fa-pause";
-                }).catch(error => {
-                    // المتصفح حظر التشغيل حتى يضغط المستخدم على أي مكان في الشاشة
-                    document.body.addEventListener('click', () => {
-                        music.play();
-                        musicIcon.className = "fas fa-pause";
-                    }, { once: true });
-                });
-            }
-        });
-
-        // تشغيل وإيقاف الأغنية يدوياً من الزر
-        playPauseBtn.addEventListener('click', () => {
-            if (music.paused) {
-                music.play();
-                musicIcon.className = "fas fa-pause";
-            } else {
-                music.pause();
-                musicIcon.className = "fas fa-play";
-            }
-        });
-
-        // التحكم بمستوى خفض ورفع الصوت من المؤشر الصغير
-        volumeControl.addEventListener('input', (e) => {
-            music.volume = e.target.value;
-        });
-    </script>
 
 </body>
 </html>
