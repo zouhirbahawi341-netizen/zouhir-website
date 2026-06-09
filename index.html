@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #000000; /* خلفية سوداء داكنة وثابتة */
+            background-color: #000000; /* خلفية سوداء داكنة بالكامل */
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* حاوية الخلفية المتحركة للسيارة */
+        /* حاوية الخلفية المتحركة وسكة دوران السيارة */
         .background-animation {
             position: fixed;
             top: 0;
@@ -39,26 +39,38 @@
             align-items: center;
         }
 
-        /* سيارة نيون رياضية تدور حول الكارت باستمرار */
-        .rotating-car {
+        /* سيارة نيون مبرمجة بالـ CSS النقي - مضمونة وتعمل دائماً في الخلفية */
+        .neon-car {
             position: absolute;
-            width: 100px; /* حجم السيارة الدوارة */
-            height: auto;
-            filter: drop-shadow(0 0 15px #00ffff);
-            animation: driveAround 12s linear infinite;
+            width: 60px;
+            height: 25px;
+            background: #00ffff;
+            border-radius: 6px;
+            box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+            animation: driveAround 10s linear infinite;
         }
 
-        /* مسار دوران السيارة حول محتوى الموقع */
+        /* إضافة تأثير كشافات نيون أمامية للسيارة */
+        .neon-car::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 12px solid rgba(0, 255, 255, 0.9);
+        }
+
+        /* مسار دوران السيارة حول الكارت */
         @keyframes driveAround {
-            0% {
-                transform: rotate(0deg) translateX(340px) rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg) translateX(340px) rotate(-360deg);
-            }
+            0% { transform: rotate(0deg) translateX(330px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(330px) rotate(-360deg); }
         }
 
-        /* محتوى الموقع الرئيسي فوق الخلفية */
+        /* محتوى الموقع الرئيسي */
         .hero {
             position: relative;
             z-index: 10;
@@ -70,8 +82,8 @@
 
         .profile-container {
             background: rgba(15, 15, 15, 0.75);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
             border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px 30px;
             border-radius: 24px;
@@ -81,11 +93,11 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.9);
         }
 
-        /* تم تكبير حجم الصورة الشخصية لتظهر واضحة وممتازة كالجيمرز */
+        /* تكبير حجم الصورة الشخصية المضيئة بناءً على طلبك */
         .avatar-box {
             position: relative;
-            width: 190px; /* حجم مكبر واحترافي */
-            height: 190px; 
+            width: 185px; /* حجم مكبر واحترافي */
+            height: 185px; 
             margin: 0 auto 25px;
         }
 
@@ -94,8 +106,8 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid rgba(0, 255, 255, 0.8); /* إطار نيون أزرق يتماشى مع السيارة */
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.4);
+            border: 4px solid #00ffff; /* إطار نيون أزرق */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
         }
 
         h1 {
@@ -118,6 +130,8 @@
             font-size: 1rem;
             margin-bottom: 25px;
             line-height: 1.6;
+            text-align: justify;
+            text-justify: inter-word;
         }
 
         .welcome-msg {
@@ -157,13 +171,14 @@
             filter: brightness(1.1);
         }
 
-        /* تنسيق مشغل سبوتيفاي المحسن */
+        /* تنسيق مشغل سبوتيفاي المستقر */
         .spotify {
-            margin-top: 10px;
+            margin-top: 15px;
             margin-bottom: 25px;
             border-radius: 12px;
             overflow: hidden;
-            background: transparent;
+            background: #111;
+            min-height: 152px;
         }
 
         .quote {
@@ -184,7 +199,7 @@
 <body>
 
     <div class="background-animation">
-        <img src="https://openclipart.org/image/800px/307099" alt="Car" class="rotating-car">
+        <div class="neon-car"></div>
     </div>
 
     <div class="hero">
@@ -223,7 +238,7 @@
             <div class="spotify">
                 <iframe 
                     style="border-radius:12px" 
-                    src="https://open.spotify.com/track/20tqXTp7TJRtLA8s2vpgEB?si=70d181bf29d6401c" 
+                    src="https://open.spotify.com/embed/track/1d9FpFGMESI1I73miZlg56" 
                     width="100%" 
                     height="152" 
                     frameBorder="0" 
