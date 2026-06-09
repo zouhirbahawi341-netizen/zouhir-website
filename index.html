@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #000000; /* خلفية سوداء داكنة بالكامل */
+            background-color: #000000; /* خلفية سوداء داكنة بالكامل ثابته وممتازة */
             color: #fff;
             overflow-x: hidden;
             min-height: 100vh;
@@ -23,51 +23,6 @@
             justify-content: center;
             align-items: center;
             position: relative;
-        }
-
-        /* حاوية الخلفية المتحركة وسكة دوران السيارة */
-        .background-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 1;
-            pointer-events: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* سيارة نيون مبرمجة بالـ CSS النقي - مضمونة وتعمل دائماً في الخلفية */
-        .neon-car {
-            position: absolute;
-            width: 60px;
-            height: 25px;
-            background: #00ffff;
-            border-radius: 6px;
-            box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-            animation: driveAround 10s linear infinite;
-        }
-
-        /* إضافة تأثير كشافات نيون أمامية للسيارة */
-        .neon-car::after {
-            content: '';
-            position: absolute;
-            right: -8px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 0;
-            height: 0;
-            border-top: 8px solid transparent;
-            border-bottom: 8px solid transparent;
-            border-left: 12px solid rgba(0, 255, 255, 0.9);
-        }
-
-        /* مسار دوران السيارة حول الكارت */
-        @keyframes driveAround {
-            0% { transform: rotate(0deg) translateX(330px) rotate(0deg); }
-            100% { transform: rotate(360deg) translateX(330px) rotate(-360deg); }
         }
 
         /* محتوى الموقع الرئيسي */
@@ -93,10 +48,10 @@
             box-shadow: 0 30px 60px rgba(0,0,0,0.9);
         }
 
-        /* تكبير حجم الصورة الشخصية المضيئة بناءً على طلبك */
+        /* حجم الصورة الشخصية المكبرة */
         .avatar-box {
             position: relative;
-            width: 185px; /* حجم مكبر واحترافي */
+            width: 185px; 
             height: 185px; 
             margin: 0 auto 25px;
         }
@@ -106,7 +61,7 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #00ffff; /* إطار نيون أزرق */
+            border: 4px solid #00ffff; /* إطار نيون أزرق مضيء حول الصورة الشخصية */
             box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
         }
 
@@ -171,13 +126,13 @@
             filter: brightness(1.1);
         }
 
-        /* تنسيق مشغل سبوتيفاي المستقر */
+        /* تنسيق حاوية مشغل سبوتيفاي لضمان الظهور الثابت والمثالي */
         .spotify {
             margin-top: 15px;
             margin-bottom: 25px;
             border-radius: 12px;
             overflow: hidden;
-            background: #111;
+            background: #282828;
             min-height: 152px;
         }
 
@@ -197,10 +152,6 @@
     </style>
 </head>
 <body>
-
-    <div class="background-animation">
-        <div class="neon-car"></div>
-    </div>
 
     <div class="hero">
         <div class="profile-container">
@@ -238,7 +189,7 @@
             <div class="spotify">
                 <iframe 
                     style="border-radius:12px" 
-                    src="https://open.spotify.com/embed/track/1d9FpFGMESI1I73miZlg56" 
+                    src="https://open.spotify.com/embed/track/1d9FpFGMESI1I73miZlg56?utm_source=generator&theme=0" 
                     width="100%" 
                     height="152" 
                     frameBorder="0" 
