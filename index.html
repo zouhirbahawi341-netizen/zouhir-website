@@ -1,205 +1,205 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZOUHIR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>زهير - الملف الشخصي</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        body {
+            background-color: #000; /* خلفية سوداء */
+            color: #fff;
+            overflow: hidden; /* لمنع ظهور شريط التمرير أثناء الحركة */
+        }
 
-<style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Segoe UI,sans-serif;
-}
+        /* حاوية الخلفية المتحركة */
+        .background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; /* لجعلها خلف المحتوى */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-body{
-background:#000;
-color:#fff;
-overflow-x:hidden;
-}
+        /* السيارة الرياضية السوداء */
+        .car {
+            width: 400px; /* حجم مناسب للسيارة */
+            height: auto;
+            position: absolute;
+            animation: rotateCar 15s linear infinite; /* حركة دورانية */
+        }
 
-.hero{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-background:
-linear-gradient(rgba(0,0,0,.6),rgba(0,0,0,.8)),
-url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e');
-background-size:cover;
-background-position:center;
-}
+        /* الهالات الضوئية الزرقاء */
+        .glow-ring {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 150, 255, 0.3);
+            box-shadow: 0 0 50px rgba(0, 150, 255, 0.5);
+            animation: pulsateGlow 4s ease-in-out infinite;
+        }
 
-.card{
-max-width:750px;
-padding:35px;
-text-align:center;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(15px);
-border-radius:25px;
-border:1px solid rgba(255,255,255,.15);
-}
+        /* تعريف حركة الدوران للسيارة */
+        @keyframes rotateCar {
+            from { transform: rotate(0deg) translateX(300px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+        }
 
-.profile{
-width:180px;
-height:180px;
-border-radius:50%;
-object-fit:cover;
-border:4px solid white;
-margin-bottom:20px;
-box-shadow:0 0 25px rgba(255,255,255,.5);
-}
+        /* تعريف حركة النبض للهالات */
+        @keyframes pulsateGlow {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
 
-h1{
-font-size:55px;
-margin-bottom:10px;
-text-shadow:0 0 20px white;
-}
+        /* تنسيق حاوية المحتوى */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1; /* فوق الخلفية المتحركة */
+        }
 
-.about{
-line-height:1.8;
-margin-top:20px;
-font-size:17px;
-}
+        .profile-container {
+            background: rgba(255, 255, 255, 0.05); /* زجاجي شبه شفاف */
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
 
-.instagram{
-display:inline-block;
-margin-top:25px;
-padding:14px 28px;
-background:#E1306C;
-color:white;
-text-decoration:none;
-border-radius:50px;
-font-weight:bold;
-}
+        .avatar-box {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 20px;
+        }
 
-.spotify{
-margin-top:25px;
-}
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #00ffff; /* إطار أزرق سماوي */
+            box-shadow: 0 0 15px #00ffff;
+        }
 
-.quote{
-margin-top:25px;
-font-style:italic;
-opacity:.8;
-}
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            color: #fff;
+            text-transform: uppercase;
+        }
 
-footer{
-margin-top:25px;
-opacity:.6;
-}
+        .bio {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
 
-#snow{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-}
-</style>
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* ألوان الأزرار */
+        .instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+
+        .facebook {
+            background-color: #1877F2;
+        }
+
+        .steam {
+            background: linear-gradient(90deg, #002244 0%, #0077b6 100%);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+
+        .spotify-container {
+            margin-top: 25px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        }
+    </style>
 </head>
-
 <body>
 
-<canvas id="snow"></canvas>
+    <div class="background-container">
+        <div class="glow-ring"></div> <img src="path/to/your/black_car.png" alt="سيارة سوداء متحركة" class="car">
+    </div>
 
-<section class="hero">
-<div class="card">
+    <div class="hero">
+        <div class="profile-container">
+            <div class="avatar-box">
+                <img src="path/to/your/profile_picture.jpg" alt="صورة زهير">
+            </div>
 
-<img src="me (1).png" class="profile" alt="Zouhir">
+            <h1>زهير</h1>
+            <p class="bio">مرحباً بكم في موقعي الشخصي | أهلاً وسهلاً بكم</p>
 
-<h1>ZOUHIR 🇩🇿</h1>
+            <div class="links-container">
+                <a href="#" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> إنستغرام
+                </a>
+                <a href="#" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i> فيسبوك
+                </a>
+                <a href="#" class="social-link steam" target="_blank">
+                    <i class="fab fa-steam"></i> ستيم
+                </a>
+            </div>
 
-<p>🎮 Gamer • 💪 Calisthenics Athlete • 📍 Algeria</p>
+            <div class="spotify-container">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6U455Xw656v5oDscOf49fD?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
 
-<div class="about">
-I'm a passionate gamer who enjoys spending time exploring new games and improving my skills.
-My favorite sport is Calisthenics, which helps me stay strong, disciplined, and healthy.
-I love learning new things, meeting new people, and challenging myself every day.
-
-<br><br>
-
-<strong>Welcome to my website! 🎮💪</strong>
-</div>
-
-<a class="instagram"
-href="https://www.instagram.com/withe_wolf1/"
-target="_blank">
-<i class="fab fa-instagram"></i> @withe_wolf1
-</a>
-
-<div class="spotify">
-<iframe
-style="border-radius:12px"
-src="https://open.spotify.com/embed/track/52HaJIVCidh340KF16F2O7?si=9105e9891ea14a61"
-width="100%"
-height="152"
-frameBorder="0"
-allowfullscreen=""
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-loading="lazy">
-</iframe>
-</div>
-
-<div class="quote">
-"Success doesn't come from what you do occasionally, it comes from what you do consistently."
-</div>
-
-<footer>
-ZOUHIR © 2026 🇩🇿
-</footer>
-
-</div>
-</section>
-
-<script>
-const canvas=document.getElementById("snow");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-const snow=[];
-
-for(let i=0;i<150;i++){
-snow.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*3+1,
-d:Math.random()*2+1
-});
-}
-
-function draw(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-ctx.fillStyle="white";
-ctx.beginPath();
-
-for(let i=0;i<snow.length;i++){
-let s=snow[i];
-ctx.moveTo(s.x,s.y);
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2,true);
-}
-ctx.fill();
-
-for(let i=0;i<snow.length;i++){
-let s=snow[i];
-s.y+=s.d;
-
-if(s.y>canvas.height){
-s.y=0;
-s.x=Math.random()*canvas.width;
-}
-}
-}
-
-setInterval(draw,25);
-</script>
+        </div>
+    </div>
 
 </body>
 </html>
