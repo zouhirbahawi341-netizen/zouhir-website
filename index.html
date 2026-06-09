@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زهير - الملف الشخصي</title>
+    <title>ZOUHIR DZ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -15,82 +15,144 @@
         }
 
         body {
-            background-color: #000; /* خلفية سوداء */
+            background-color: #050505;
             color: #fff;
-            overflow: hidden; /* لمنع ظهور شريط التمرير أثناء الحركة */
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
-        /* حاوية الخلفية المتحركة */
-        .background-container {
+        /* حاوية الخلفية المتحركة وسكة دوران السيارة */
+        .background-animation {
             position: fixed;
             top: 0;
             left: 0;
             width: 100vw;
             height: 100vh;
-            z-index: -1; /* لجعلها خلف المحتوى */
+            z-index: 1;
+            pointer-events: none;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* السيارة الرياضية السوداء */
-        .car {
-            width: 400px; /* حجم مناسب للسيارة */
-            height: auto;
+        /* مجسم سيارة نيون متحرك يدور حول الموقع */
+        .neon-car {
             position: absolute;
-            animation: rotateCar 15s linear infinite; /* حركة دورانية */
+            width: 60px;
+            height: 30px;
+            background: #00ffff;
+            border-radius: 8px;
+            box-shadow: 0 0 25px #00ffff, 0 0 45px #00ffff;
+            animation: driveAround 12s linear infinite;
         }
 
-        /* الهالات الضوئية الزرقاء */
-        .glow-ring {
+        .neon-car::after {
+            content: '';
             position: absolute;
-            width: 600px;
-            height: 600px;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid rgba(0, 255, 255, 0.8);
+            filter: blur(2px);
+        }
+
+        @keyframes driveAround {
+            0% { transform: rotate(0deg) translateX(320px) rotate(0deg); }
+            100% { transform: rotate(360deg) translateX(320px) rotate(-360deg); }
+        }
+
+        /* زر التحكم في الموسيقى الصغير (ثابت في زاوية الشاشة) */
+        .music-controller {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+        }
+
+        .music-controller:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .music-btn {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
-            border: 2px solid rgba(0, 150, 255, 0.3);
-            box-shadow: 0 0 50px rgba(0, 150, 255, 0.5);
-            animation: pulsateGlow 4s ease-in-out infinite;
+            transition: 0.2s;
         }
 
-        /* تعريف حركة الدوران للسيارة */
-        @keyframes rotateCar {
-            from { transform: rotate(0deg) translateX(300px) rotate(0deg); }
-            to { transform: rotate(360deg) translateX(300px) rotate(-360deg); }
+        .music-btn:hover {
+            color: #00ffff;
+            transform: scale(1.1);
         }
 
-        /* تعريف حركة النبض للهالات */
-        @keyframes pulsateGlow {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.05); opacity: 1; }
+        /* شريط التحكم في حدة الصوت الدقيق */
+        .volume-slider {
+            width: 0;
+            opacity: 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 4px;
+            accent-color: #00ffff;
         }
 
-        /* تنسيق حاوية المحتوى */
+        .music-controller:hover .volume-slider {
+            width: 70px;
+            opacity: 1;
+        }
+
+        /* محتوى الموقع الرئيسي */
         .hero {
-            min-height: 100vh;
+            position: relative;
+            z-index: 10;
+            padding: 40px 20px;
+            width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
-            position: relative;
-            z-index: 1; /* فوق الخلفية المتحركة */
         }
 
         .profile-container {
-            background: rgba(255, 255, 255, 0.05); /* زجاجي شبه شفاف */
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(15, 15, 15, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             padding: 40px 30px;
             border-radius: 24px;
             width: 100%;
-            max-width: 450px;
+            max-width: 540px;
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.8);
         }
 
         .avatar-box {
             position: relative;
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             margin: 0 auto 20px;
         }
 
@@ -99,107 +161,189 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #00ffff; /* إطار أزرق سماوي */
-            box-shadow: 0 0 15px #00ffff;
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         h1 {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             margin-bottom: 5px;
+            font-weight: 700;
             letter-spacing: 1px;
             color: #fff;
             text-transform: uppercase;
         }
 
-        .bio {
-            color: #bbb;
+        .subtitle {
             font-size: 0.95rem;
-            margin-bottom: 30px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+
+        .bio {
+            color: #e0e0e0;
+            font-size: 1rem;
+            margin-bottom: 25px;
             line-height: 1.6;
+        }
+
+        .welcome-msg {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
 
         .links-container {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
             margin-bottom: 30px;
         }
 
         .social-link {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 14px;
-            border-radius: 12px;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 30px;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ألوان الأزرار */
-        .instagram {
-            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-        }
-
-        .facebook {
-            background-color: #1877F2;
-        }
-
-        .steam {
-            background: linear-gradient(90deg, #002244 0%, #0077b6 100%);
-        }
+        .instagram { background-color: #e1306c; }
+        .facebook { background-color: #1877F2; }
+        .steam { background-color: #171a21; border: 1px solid rgba(255, 255, 255, 0.15); }
 
         .social-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
             filter: brightness(1.1);
         }
 
-        .spotify-container {
-            margin-top: 25px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        .quote {
+            font-style: italic;
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            margin-top: 15px;
+        }
+
+        .footer {
+            font-size: 0.8rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
     </style>
 </head>
 <body>
 
-    <div class="background-container">
-        <div class="glow-ring"></div> <img src="path/to/your/black_car.png" alt="سيارة سوداء متحركة" class="car">
+    <div class="background-animation">
+        <div class="neon-car"></div>
+    </div>
+
+    <audio id="bg-music" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="music-controller">
+        <button class="music-btn" id="play-pause-btn">
+            <i class="fas fa-play" id="music-icon"></i>
+        </button>
+        <input type="range" class="volume-slider" id="volume-control" min="0" max="1" step="0.1" value="0.4">
     </div>
 
     <div class="hero">
         <div class="profile-container">
+            
             <div class="avatar-box">
-                <img src="path/to/your/profile_picture.jpg" alt="صورة زهير">
+                <img src="me (1).png" alt="Zouhir Profile">
             </div>
 
-            <h1>زهير</h1>
-            <p class="bio">مرحباً بكم في موقعي الشخصي | أهلاً وسهلاً بكم</p>
+            <h1>ZOUHIR <span style="font-weight: 300; font-size: 1.8rem;">DZ</span></h1>
+            
+            <div class="subtitle">
+                🎮 Gamer • 💪 Calisthenics Athlete • 📍 Algeria
+            </div>
+
+            <p class="bio">
+                I'm a passionate gamer who enjoys spending time exploring new games and improving my skills. My favorite sport is Calisthenics, which helps me stay strong, disciplined, and healthy. I love learning new things, meeting new people, and challenging myself every day.
+            </p>
+
+            <div class="welcome-msg">
+                Welcome to my website! 🎮💪
+            </div>
 
             <div class="links-container">
-                <a href="#" class="social-link instagram" target="_blank">
-                    <i class="fab fa-instagram"></i> إنستغرام
+                <a href="https://www.instagram.com/withe_wolf1/" class="social-link instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> Instagram
                 </a>
-                <a href="#" class="social-link facebook" target="_blank">
-                    <i class="fab fa-facebook-f"></i> فيسبوك
+                <a href="https://www.facebook.com/zohir.hocine.534073/" class="social-link facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
-                <a href="#" class="social-link steam" target="_blank">
-                    <i class="fab fa-steam"></i> ستيم
+                <a href="https://steamcommunity.com/profiles/7656119879337291/friends/add/" class="social-link steam" target="_blank">
+                    <i class="fab fa-steam"></i> Steam
                 </a>
             </div>
 
-            <div class="spotify-container">
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/6U455Xw656v5oDscOf49fD?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            <div class="quote">
+                "Success doesn't come from what you do occasionally, it comes from what you do consistently."
+            </div>
+
+            <div class="footer">
+                ZOUHIR © 2026 dz
             </div>
 
         </div>
     </div>
+
+    <script>
+        const music = document.getElementById('bg-music');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const musicIcon = document.getElementById('music-icon');
+        const volumeControl = document.getElementById('volume-control');
+
+        // تحديد حجم الصوت الافتراضي (0.4 يعني منخفض ومريح)
+        music.volume = 0.4;
+
+        // محاولة تشغيل الصوت تلقائياً بمجرد تحميل الصفحة
+        window.addEventListener('DOMContentLoaded', () => {
+            const playPromise = music.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // نجح التشغيل التلقائي
+                    musicIcon.className = "fas fa-pause";
+                }).catch(error => {
+                    // المتصفح حظر التشغيل حتى يضغط المستخدم على أي مكان في الشاشة
+                    document.body.addEventListener('click', () => {
+                        music.play();
+                        musicIcon.className = "fas fa-pause";
+                    }, { once: true });
+                });
+            }
+        });
+
+        // تشغيل وإيقاف الأغنية يدوياً من الزر
+        playPauseBtn.addEventListener('click', () => {
+            if (music.paused) {
+                music.play();
+                musicIcon.className = "fas fa-pause";
+            } else {
+                music.pause();
+                musicIcon.className = "fas fa-play";
+            }
+        });
+
+        // التحكم بمستوى خفض ورفع الصوت من المؤشر الصغير
+        volumeControl.addEventListener('input', (e) => {
+            music.volume = e.target.value;
+        });
+    </script>
 
 </body>
 </html>
